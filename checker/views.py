@@ -19,4 +19,9 @@ def show_certificate(request, certificate_hash):
 		return HttpResponse("400 Bad Request")
 	except:
 		print("Don't expect this")
-	return HttpResponse(certificate.certificate_event.event_name)
+
+	# No views yet
+	string_to_show = "Name: " + certificate.certificate_holder.first_name + " " + certificate.certificate_holder.middle_name + " " + certificate.certificate_holder.last_name
+	string_to_show = string_to_show + "<br>College: " + certificate.certificate_holder.college + "<br>Email: " + certificate.certificate_holder.email
+	string_to_show = string_to_show + "<br>Event Name: " + certificate.certificate_event.event_name
+	return HttpResponse(string_to_show)
