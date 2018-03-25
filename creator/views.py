@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.db import IntegrityError
 
 from .tasks import TestTask
 from django.core.mail import EmailMessage
@@ -35,7 +36,10 @@ def make_cert(request, event_name):
 			try:
 				certificate = Certificate(certificate_identifier = generate_hash(attendee, event_name, event_url), certificate_holder = attendee, certificate_event = event)
 				certificate.save()
+			except IntegrityError:
+				print("Already Created Certificate For This User")
 			except:
-				print("Already Created For This User")
+				print("Something is wrong")
+				# Yet to decide what to do. Maybe nothing
 
 		return HttpResponse("Welcome! ")
