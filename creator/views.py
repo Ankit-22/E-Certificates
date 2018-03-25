@@ -30,13 +30,12 @@ def make_cert(request, event_name):
 		event_url = generate_event_url(event_name)
 		event = get_event_by_url( event_url )
 
-		Certificate.objects.all().delete()
-
 		for attendee in event.attendees.all():
 			# Now generate model
-			certificate = Certificate(certificate_identifier = generate_hash(attendee, event_name, event_url), certificate_holder = attendee, certificate_event = event)
-			certificate.save()
-
-		print(Certificate.objects.all())
+			try:
+				certificate = Certificate(certificate_identifier = generate_hash(attendee, event_name, event_url), certificate_holder = attendee, certificate_event = event)
+				certificate.save()
+			except:
+				print("Already Created For This User")
 
 		return HttpResponse("Welcome! ")
