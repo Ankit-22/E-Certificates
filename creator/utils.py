@@ -6,6 +6,4 @@ def generate_hash(attendee, event_name, event_url):
 		middle_name + "xx" + attendee.last_name + "xx" + attendee.college + "xx" + attendee.email + 
 		"xx" + str(random.randint(1, 10**100))).encode(encoding = 'ASCII')
 
-	print(string_to_hash)
-
 	return hashlib.sha256(string_to_hash).hexdigest()
