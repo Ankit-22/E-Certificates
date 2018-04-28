@@ -1,9 +1,5 @@
 from django.conf.urls import url
-<<<<<<< HEAD
-from .views import test, show_certificate
-=======
 from .views import test, show_certificate, home, login_, logout_
->>>>>>> d322bc2363b0c60b04ede7e3059cb98f9ce14585
 
 
 urlpatterns = [
