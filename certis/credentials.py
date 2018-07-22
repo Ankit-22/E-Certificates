@@ -1,2 +1,2 @@
-email_username = "codecell.engg@gmail.com"
-email_password = "GDScodecell123"
+email_username = "tripathiankit0522@gmail.com"
+email_password = "22051998"
